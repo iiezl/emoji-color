@@ -1,6 +1,7 @@
 export interface EmojiColorItem {
     emoji: string;
-    color: [number, number, number, number, string];
+    unicode: number;
+    color: [number, number, number, string];
 }
 export type EmojiColorDataset = EmojiColorItem[];
 export interface EmojiColorResult {

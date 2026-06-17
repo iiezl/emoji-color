@@ -1,13 +1,13 @@
 export interface EmojiColorItem {
   emoji: string
-  /** * Array tuple schema matching the minified layout:
-   * [0] Unicode Base-10 Integer
-   * [1] Red (0-255)
-   * [2] Green (0-255)
-   * [3] Blue (0-255)
-   * [4] Hex Color String
+  unicode: number
+  /** * Array tuple schema:
+   * [0] Red (0-255)
+   * [1] Green (0-255)
+   * [2] Blue (0-255)
+   * [3] Hex Color String
    */
-  color: [number, number, number, number, string]
+  color: [number, number, number, string]
 }
 
 // The entire array representation of your emojis.json file

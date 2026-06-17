@@ -21,11 +21,11 @@
     static REMOTE_URL = "https://raw.githubusercontent.com/user-lezi/emoji-color/refs/heads/main/emojis.json";
     // High-fidelity fallback database consisting of 5 common diverse entries
     static FALLBACK_DATASET = [
-      { emoji: "\u{1F951}", color: [129361, 118, 179, 67, "#76b343"] },
-      { emoji: "\u{1F534}", color: [128308, 190, 25, 49, "#be1931"] },
-      { emoji: "\u{1F349}", color: [127817, 234, 89, 110, "#ea596e"] },
-      { emoji: "\u{1F433}", color: [128051, 56, 189, 248, "#38bdf8"] },
-      { emoji: "\u{1F5A4}", color: [128420, 30, 41, 59, "#1e293b"] }
+      { emoji: "\u{1F951}", unicode: 129361, color: [118, 179, 67, "#76b343"] },
+      { emoji: "\u{1F534}", unicode: 128308, color: [190, 25, 49, "#be1931"] },
+      { emoji: "\u{1F349}", unicode: 127817, color: [234, 89, 110, "#ea596e"] },
+      { emoji: "\u{1F433}", unicode: 128051, color: [56, 189, 248, "#38bdf8"] },
+      { emoji: "\u{1F5A4}", unicode: 128420, color: [30, 41, 59, "#1e293b"] }
     ];
     static _dataset = null;
     static _emojiMap = null;
@@ -94,8 +94,8 @@
       this.ensureInitialized();
       const match = this._emojiMap.get(emoji);
       if (!match) return null;
-      const [unicodeInt, r, g, b, hex] = match.color;
-      return { unicodeInt, r, g, b, hex };
+      const [r, g, b, hex] = match.color;
+      return { unicodeInt: match.unicode, r, g, b, hex };
     }
     /**
      * Convert any RGB input into the absolute closest matching emoji synchronously
@@ -105,7 +105,7 @@
       let closestItem = this._dataset[0];
       let minDistance = Infinity;
       for (const item of this._dataset) {
-        const [, itemR, itemG, itemB] = item.color;
+        const [itemR, itemG, itemB] = item.color;
         const dR = r - itemR;
         const dG = g - itemG;
         const dB = b - itemB;

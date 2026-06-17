@@ -1,6 +1,6 @@
 {
   "name": "@iiezl/emoji-color",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert emojis to their dominant colors and find the closest matching emoji from any RGB/Hex color.",
   "keywords": [
     "emoji",

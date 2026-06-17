@@ -18,11 +18,11 @@ exports.EmojiColor = void 0;
 class EmojiColor {
     static REMOTE_URL = "https://raw.githubusercontent.com/user-lezi/emoji-color/refs/heads/main/emojis.json";
     static FALLBACK_DATASET = [
-        { emoji: "🥑", color: [129361, 118, 179, 67, "#76b343"] },
-        { emoji: "🔴", color: [128308, 190, 25, 49, "#be1931"] },
-        { emoji: "🍉", color: [127817, 234, 89, 110, "#ea596e"] },
-        { emoji: "🐳", color: [128051, 56, 189, 248, "#38bdf8"] },
-        { emoji: "🖤", color: [128420, 30, 41, 59, "#1e293b"] },
+        { emoji: "🥑", unicode: 129361, color: [118, 179, 67, "#76b343"] },
+        { emoji: "🔴", unicode: 128308, color: [190, 25, 49, "#be1931"] },
+        { emoji: "🍉", unicode: 127817, color: [234, 89, 110, "#ea596e"] },
+        { emoji: "🐳", unicode: 128051, color: [56, 189, 248, "#38bdf8"] },
+        { emoji: "🖤", unicode: 128420, color: [30, 41, 59, "#1e293b"] },
     ];
     static _dataset = null;
     static _emojiMap = null;
@@ -79,15 +79,15 @@ class EmojiColor {
         const match = this._emojiMap.get(emoji);
         if (!match)
             return null;
-        const [unicodeInt, r, g, b, hex] = match.color;
-        return { unicodeInt, r, g, b, hex };
+        const [r, g, b, hex] = match.color;
+        return { unicodeInt: match.unicode, r, g, b, hex };
     }
     static rgbToClosest(r, g, b) {
         this.ensureInitialized();
         let closestItem = this._dataset[0];
         let minDistance = Infinity;
         for (const item of this._dataset) {
-            const [, itemR, itemG, itemB] = item.color;
+            const [itemR, itemG, itemB] = item.color;
             const dR = r - itemR;
             const dG = g - itemG;
             const dB = b - itemB;
