@@ -1,0 +1,53 @@
+{
+  "name": "@iiezl/emoji-color",
+  "version": "1.0.0",
+  "description": "Convert emojis to their dominant colors and find the closest matching emoji from any RGB/Hex color.",
+  "keywords": [
+    "emoji",
+    "color",
+    "dominant-color",
+    "color-matching",
+    "nearest-neighbor",
+    "emoji-palette",
+    "rgb-to-emoji",
+    "hex-to-emoji"
+  ],
+  "homepage": "https://github.com/iiezl/emoji-color#readme",
+  "bugs": {
+    "url": "https://github.com/iiezl/emoji-color/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iiezl/emoji-color.git"
+  },
+  "license": "MIT",
+  "author": "lezii006",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "prepublishOnly": "tsc",
+    "build": "tsc -p tsconfig.json",
+    "docgen": "npm run build && typedoc ./src --plugin typedoc-rhineai-theme --out ./docs",
+    "eslint": "eslint src --fix && prettier src --write",
+    "bundle": "npm run build && esbuild src/browser.ts --bundle --outfile=browser/bundle.js --sourcemap --target=es2022 && esbuild src/browser.ts --bundle --outfile=browser/bundle.min.js --minify --analyze --target=es2022"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^25.9.3",
+    "@typescript-eslint/eslint-plugin": "^8.61.0",
+    "@typescript-eslint/parser": "^8.61.0",
+    "esbuild": "^0.28.1",
+    "eslint": "^10.4.1",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.6.0",
+    "prettier": "^3.8.4",
+    "typedoc": "^0.28.19",
+    "typedoc-rhineai-theme": "^1.2.0",
+    "typescript": "^6.0.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

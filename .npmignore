@@ -1,0 +1,8 @@
+src
+.*
+tsconfig.json
+docs
+dist/__test.*
+dist/browser
+browser
+eslint.config.mjs
